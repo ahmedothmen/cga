@@ -1,0 +1,316 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+
+	<ui:define name="content">
+
+		<h:form>
+
+
+			<h:panelGrid>
+				<h:form>
+
+
+					<!-- 				<p:dataTable value="#{vehicleBean.myVehicleByInsuredId}" paginatorTemplate="10" selectionmode="single"> -->
+					<!--     <p:column field="Brand" headertext="Brand" filterValue="#{vehicleBean.marque}"></p:column> -->
+					<!--     <p:column field="Model" headertext="Model" filterValue="#{vehicleBean.model}"></p:column> -->
+					<!--         <p:column field="Chassis" headertext="chassisnumber" filterValue="#{vehicleBean.numchassis}"></p:column> -->
+					<!--        <p:column field="Color" headertext="Color" filterValue="#{vehicleBean.color}"></p:column> -->
+					<!--     <p:column field="Power" headertext="Power" filterValue="#{vehicleBean.horsepower}"></p:column> -->
+					<!--     <p:column field="Registration" headertext="Registration" filterValue="#{vehicleBean.immatriculation}"></p:column> -->
+					<!--         <p:column field="Type" headertext="Type" filterValue="#{vehicleBean.type}"></p:column> -->
+					<!-- </p:dataTable> -->
+
+
+
+					<p:breadCrumb>
+						<p:menuitem value="Login" url="#" />
+						<p:menuitem value="User" url="#" />
+						<p:menuitem value="Insured" url="#" />
+						<p:menuitem value="Vehicles" url="#" />
+
+					</p:breadCrumb>
+
+
+					<h:form>
+						<p:dataScroller value="#{vehicleBean.myVehicleByInsuredId}"
+							var="vehicle" chunkSize="10">
+							<f:facet name="header">
+            Scroll Down to Load More Vehicle
+        </f:facet>
+
+							<h:panelGrid columns="2" style="width:40%" columnClasses="detail">
+								<!--             <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" />  -->
+
+								<p:outputPanel>
+									<h:panelGrid columns="2" cellpadding="5">
+
+										<h:outputText value="Brand:" />
+										<h:outputText value="#{vehicle.marque}" />
+
+										<h:outputText value="Model" />
+										<h:outputText value="#{vehicle.model}" />
+
+										<h:outputText value="Chassis Number" />
+										<h:outputText value="#{vehicle.numchassis}" />
+
+										<h:outputText value="Color:" />
+										<h:outputText value="#{vehicle.color}" />
+
+										<h:outputText value="registration" />
+										<h:outputText value="#{vehicle.horsepower}" />
+
+										<h:outputText value="Power" />
+										<h:outputText value="#{vehicle.immatriculation}" />
+
+										<h:outputText value="Type" />
+										<h:outputText value="#{vehicle.type}" />
+
+
+										<h:outputText value="Buy Date" />
+										<h:outputText value="#{vehicle.dateachat}" />
+
+
+										<f:facet name="footer">
+											<p:commandButton
+												action="#{vehicleBean.SupprimerVehicle(vehicle.id)}"
+												icon="ui-icon-close">
+
+
+												<p:confirm header="Confirmation" message="This vehicle will be deleted?"
+													icon="ui-icon-alert" />
+											</p:commandButton>
+
+											<p:confirmDialog global="true" showEffect="fade"
+												hideEffect="fade">
+												<p:commandButton value="Yes" type="button"
+													styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+												<p:commandButton value="No" type="button"
+													styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+											</p:confirmDialog>
+										</f:facet>
+
+									</h:panelGrid>
+								</p:outputPanel>
+							</h:panelGrid>
+						</p:dataScroller>
+					</h:form>
+
+
+
+
+
+
+					<p:dataTable value="#{vehicleBean.myVehicleByInsuredId}"
+						var="vehicle" border="1" styleClass="order-table"
+						headerClass="order-table-header"
+						rowClasses="order-table-odd-row,order-table-even-row"
+						widgetVar="vehicleTable" id="tbl"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+						paginator="true" rows="5" style="margin-bottom:20px">
+						<f:facet name="header">
+							<p:outputPanel>
+								<h:outputText value="Search all fields:" />
+								<p:inputText id="globalFilter"
+									onkeyup="PF('vehicleTable').filter()" style="width:150px"
+									placeholder="Enter keyword" />
+							</p:outputPanel>
+						</f:facet>
+						<f:facet name="{Exporters}">
+							<h:commandLink>
+								<p:graphicImage library="img" name="pdf.png" width="24" />
+								<p:dataExporter type="pdf" target="tbl" fileName="cars" />
+							</h:commandLink>
+							</f:facet>
+							<p:column filterBy="#{vehicle.marque}">
+
+								<f:facet name="header">
+									<h:outputText value="Brand" for="brand" />
+								</f:facet>
+								<p:inplace id="brand" value="#{vehicleBean.modifier()}">
+									<p:inputText value="#{vehicle.marque}" />
+								</p:inplace>
+								<!--  							<h:outputText value="#{vehicle.marque}" />  -->
+							</p:column>
+
+							<p:column filterBy="#{vehicle.model}">
+								<f:facet name="header">
+									<h:outputText value="Model" />
+								</f:facet>
+								<h:outputText value="#{vehicle.model}" />
+							</p:column>
+
+							<p:column filterBy="#{vehicle.numchassis}">
+								<f:facet name="header">
+									<h:outputText value="chassis number" />
+								</f:facet>
+								<h:outputText value="#{vehicle.numchassis}" />
+							</p:column>
+							<p:column filterBy="#{vehicle.color}">
+								<f:facet name="header">
+									<h:outputText value="color" />
+								</f:facet>
+								<h:outputText value="#{vehicle.color}" />
+							</p:column>
+							<p:column filterBy="#{vehicle.horsepower}">
+								<f:facet name="header">
+									<h:outputText value="power" />
+								</f:facet>
+								<h:outputText value="#{vehicle.horsepower}" />
+							</p:column>
+							<p:column filterBy="#{vehicle.immatriculation}">
+								<f:facet name="header">
+									<h:outputText value="registration" />
+								</f:facet>
+								<h:outputText value="#{vehicle.immatriculation}" />
+							</p:column>
+							<p:column filterBy="#{vehicle.type}">
+								<f:facet name="header">
+									<h:outputText value="Type" />
+								</f:facet>
+								<h:outputText value="#{vehicle.type}" />
+							</p:column>
+
+							<p:column filterBy="#{vehicle.dateachat}">
+								<f:facet name="header">
+									<h:outputText value="Buy Date" />
+								</f:facet>
+
+								<h:outputText value="#{vehicle.dateachat}" />
+
+							</p:column>
+
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Action" />
+								</f:facet>
+
+<h:form>
+								<p:commandButton
+									action="#{vehicleBean.SupprimerVehicle(vehicle.id)}"
+									icon="ui-icon-close" type="button" />
+									</h:form>
+
+								<!-- 								<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" /> -->
+								<!--    								</p:commandButton> -->
+
+								<!--    									 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade"> -->
+								<!--       								  <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"  /> -->
+
+								<!--    										<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" /> -->
+								<!--     								 </p:confirmDialog> -->
+								<!-- 								<p:commandButton action="#{vehicleBean.modifier(vehicle)}" value="Edit" /> -->
+
+					</p:column>
+					</p:dataTable>
+					<h:commandLink>
+						<p:graphicImage name="/pdf.png" width="24" />
+						<p:dataExporter type="pdf" target="tbl" fileName="vehicle" />
+					</h:commandLink>
+				</h:form>
+			</h:panelGrid>
+
+			<h:panelGrid>
+
+				<h:panelGrid columns="2" cellpadding="5" style="margin-left: 20px">
+
+					<p:outputLabel value="Brand" />
+					<p:inputText value="#{vehicleBean.marque}"
+						style="margin-left: 40px" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="2" cellpadding="5" style="margin-left: 20px">
+
+					<p:outputLabel value="Model" />
+					<p:inputText value="#{vehicleBean.model}" style="margin-left: 40px" />
+				</h:panelGrid>
+
+
+
+				<h:panelGrid columns="2" cellpadding="5" style="margin-left: 20px">
+					<p:outputLabel value="Color" />
+					<p:colorPicker value="#{vehicleBean.color}"
+						style="margin-left: 40px" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="2" cellpadding="5" style="margin-left: 20px">
+
+					<p:outputLabel value="ChassisN°" />
+					<p:inputText value="#{vehicleBean.numchassis}" />
+				</h:panelGrid>
+				<h:panelGrid columns="1" cellpadding="3" style="margin-left: 20px">
+
+					<p:outputLabel value="Registration" />
+					<!-- <h:inputText value="#{vehicleBean.immatriculation}" /> -->
+					<p:inputMask id="immatriculation"
+						value="#{vehicleBean.immatriculation}" mask="999-tn-9999"
+						style="margin-left: 95px" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="2" cellpadding="5" style="margin-left: 50px">
+
+					<p:outputLabel value="Power" />
+					<p:spinner value="#{vehicleBean.horsepower}" min="4" max="450"
+						required="true" />
+				</h:panelGrid>
+
+				<p:outputLabel for="start" value="Select Buy Date:" />
+				<p:calendar id="start" value="#{vehicleBean.dateachat}"
+					pattern="dd-MM-yyyy" mask="true" />
+				<!--         			<p:convertDateTime pattern="dd-MM-yyyy"/> -->
+
+
+
+
+
+				<!-- <p: value="#{vehicleBean.horsepower}" /> -->
+
+
+
+				<p:outputLabel value="Type" style="margin-left: 40px" />
+				<p:selectOneListbox value="#{vehicleBean.type}"
+					style="margin-left: 85px" required="true">
+
+					<f:selectItems value="#{datas_typeVehicle.types}" />
+				</p:selectOneListbox>
+<!-- TreatVehicleDemande(vehicleBean.numchassis,vehicleBean.oldnumChassis) -->
+				<p:commandButton
+					action="#{vehicleBean.addVehicle()}"
+					value="Add Vehicle" icon="ui-icon-plusthick" />
+
+				<p:dialog header="Effects" widgetVar="dlg3" showEffect="explode"
+					hideEffect="bounce" height="100">
+					<h:outputText value="Vehicle addded succesfully !!!" />
+				</p:dialog>
+
+
+				<p:commandButton action="#{vehicleBean.mettreAjourVehicle()}"
+					value="update vehicle" />
+
+				<h:link outcome="/mail/sendMail" value="Send an Email"
+					styleClass="fa fa-paper-plane" />
+
+				<!-- 				 <span>Send Mail</span> -->
+				<!--                         <div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div> -->
+				<!--                         <div class="layout-menu-tooltip-text">Documentation</div></div> -->
+				<br />
+
+
+				<!-- <h:commandButton action="#{employeBean.mettreAjourEmploye()}" value="Mettre a jour l employe"/> -->
+
+				<!-- 				<p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:100%;height:400px" /> -->
+
+			</h:panelGrid>
+
+
+
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+

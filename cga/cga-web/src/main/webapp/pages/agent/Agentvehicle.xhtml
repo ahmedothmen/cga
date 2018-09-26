@@ -1,0 +1,122 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+
+	<ui:define name="title">Client's Vehicles</ui:define>
+	<ui:define name="content">
+
+		<h:form>
+
+
+			<h:panelGrid>
+				<h:form>
+				
+				
+				 <p:dataTable var="car" value="#{vehicleBean.filteredcar}" widgetVar="vehicleTable"
+                 emptyMessage="No vehicle found with given criteria" filteredValue="#{vehicleBean.vehicles}">
+                 <f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="Search all fields:" />
+                <p:inputText id="globalFilter" onkeyup="PF('vehicleTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+            </p:outputPanel>
+        </f:facet>
+				
+				
+					<p:dataTable value="#{vehicleBean.vehicles}" var="vehicle"
+						border="1" styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Brand" for="brand"/>
+							</f:facet>
+							
+ 							<h:outputText value="#{vehicle.marque}" /> 
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Model" />
+							</f:facet>
+							<h:outputText value="#{vehicle.model}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="chassis number" />
+							</f:facet>
+							<h:outputText value="#{vehicle.numchassis}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="color" />
+							</f:facet>
+							<h:outputText value="#{vehicle.color}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="power" />
+							</f:facet>
+							<h:outputText value="#{vehicle.horsepower}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="registration" />
+							</f:facet>
+							<h:outputText value="#{vehicle.immatriculation}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Type" />
+							</f:facet>
+							<h:outputText value="#{vehicle.type}" />
+						</p:column>
+							
+							<p:column>
+							<f:facet name="header">
+							<h:outputText value="Buy Date" />
+							</f:facet>
+							  
+           					 <h:outputText value="#{vehicleBean.dateachat}" />
+           					
+							</p:column>
+							
+							
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Action" />
+							</f:facet>
+
+							<p:commandButton
+								action="#{vehicleBean.SupprimerVehicle(vehicle.id)}"
+								icon="ui-icon-close" type="button" >
+								
+								<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+   								</p:commandButton>
+ 
+   									 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+      								  <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"  />
+ 											
+   										<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    								 </p:confirmDialog>
+								<p:commandButton action="#{vehicleBean.modifier(vehicle)}" value="Edit" />
+
+						</p:column>
+		
+					</p:dataTable></p:dataTable>
+				</h:form>
+				</h:panelGrid>
+											
+
+<h:head><title>Demand Chart</title></h:head> 
+
+<p:chart type="pie" model="#{piecountVehicle.pieModel1}" style="width:400px;height:300px" />
+
+			
+			
+			</h:form>
+			
+			</ui:define></ui:composition>

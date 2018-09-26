@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+
+		<body>
+			<h:form id="form">
+			 <p:dataTable id="tbl" var="contract" value="#{contractBean.contractAccepted}"
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                 paginator="true" rows="5" style="margin-bottom:20px"  widgetVar="contractTable">
+ <f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="Search all fields:" />
+                <p:inputText id="globalFilter" onkeyup="PF('contractTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+            </p:outputPanel>
+        </f:facet>
+        <f:facet name="{Exporters}">
+            <h:commandLink>
+                <p:graphicImage library="img"  name="excel.png" width="24"/>
+                <p:dataExporter type="xls" target="tbl" fileName="contrat" />
+            </h:commandLink>
+
+        </f:facet>
+ 
+<p:column filterBy="#{contract.id}" headerText="Contract Num" filterStyle="display:none" >   
+         <f:facet name="header">
+            
+                <h:outputText value="Contract Num" />
+            </f:facet>
+            <h:outputText value="#{contract.id}" />
+        </p:column>
+ 
+        <p:column filterBy="#{contract.dateSending}" filterStyle="display:none">
+            <f:facet name="header">
+                <h:outputText value="Sending Date"/>
+            </f:facet>
+            <h:outputText value="#{contract.dateSending}" />
+        </p:column>
+ 
+        <p:column filterBy="#{contract.insured.firstName}" filterStyle="display:none">
+            <f:facet name="header">
+                <h:outputText value="Insured" />
+            </f:facet>
+            <h:outputText value="#{contract.insured.firstName} #{contract.insured.lastName}" />
+        </p:column>
+        
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Insured's email" />
+            </f:facet>
+            <h:outputText value="#{contract.insured.email}" />
+        </p:column>
+ <p:column filterBy="#{contract.startDate}" filterStyle="display:none">
+            <f:facet name="header">
+                <h:outputText value="Start Date" />
+            </f:facet>
+            <h:outputText value="#{contract.startDate}" />
+        </p:column>
+        <p:column filterBy="#{contract.endDate}" filterStyle="display:none">
+            <f:facet name="header">
+                <h:outputText value="End Date" />
+            </f:facet>
+            <h:outputText value="#{contract.endDate}" />
+        </p:column>
+    </p:dataTable>
+    <h:commandButton action="#{contractBean.totalcontract()}" value="Nombre of Contract" />
+    <p:outputLabel value="#{contractBean.nombre}"></p:outputLabel>
+    <h:commandButton action="#{contractBean.MaxCost()}" value="Max Cost" />
+    <p:outputLabel value="#{contractBean.costContract}"></p:outputLabel>
+ <p:carousel value="#{contractBean.Best()}" headerText="The best" var="contract" itemStyle="height:150px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:300px" cricular="true">
+        <h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
+             <h:outputText value="First Name: " />
+            <h:outputText value="#{contract.insured.firstName}" />
+  <h:outputText value="Last Name: " />
+            <h:outputText value="#{contract.insured.lastName}" />
+             <h:outputText value="Email: " />
+            <h:outputText value="#{contract.insured.email}" />
+            <h:outputText value="Num Insured: " />
+            <h:outputText value="#{contract.insured.id}" />
+ 
+            <f:facet name="footer">
+              
+            </f:facet>
+        </h:panelGrid>
+    </p:carousel>   
+			</h:form>
+			
+
+		</body>
+	</ui:define>
+</ui:composition>
+</html>

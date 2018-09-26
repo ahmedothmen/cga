@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head title="JSF-PrimeFaces-CDI Sample Web Application">
+        <f:facet name="first">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta http-equiv="pragma" content="no-cache"/>
+            <meta http-equiv="cache-control" content="no-cache"/>
+            <meta http-equiv="expires" content="0"/>
+        </f:facet>
+    </h:head>
+    <h:body>
+    
+        <h:form id="mainForm" prependId="false">
+           <p:growl id="messages"/>
+    <p:menubar>
+        
+                <p:menuitem value="My Contracts" url="/Issured/MyContract.jsf" />
+              
+        <p:submenu label="Contracts" >
+            <p:menuitem value="Waiting Contracts" url="/Agent/AllContract.jsf"  />
+            <p:menuitem value="Accepted Contracts" url="/Agent/AcceptedContract.jsf"  />
+        </p:submenu>
+                        <p:menuitem value="My vehicle" url="/vehicle.jsf" />
+        
+ 
+        <p:submenu label="Help" icon="ui-icon-help">
+            <p:menuitem value="Contents" url="#" />
+            <p:submenu label="Search" icon="ui-icon-search">
+                <p:submenu label="Text">
+                    <p:menuitem value="Workspace" url="#" />
+                </p:submenu>
+                <p:menuitem value="File" url="#" />
+            </p:submenu>
+        </p:submenu>
+ 
+        <p:menuitem value="Quit" url="http://www.cga.gov.tn" icon="ui-icon-close" />
+ 
+        <f:facet name="options">
+            <p:inputText style="margin-right:10px" placeholder="Search"/>
+            <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+        </f:facet>
+    </p:menubar>
+        </h:form>
+        <div  style="margin-top:100px; margin-bottom: 210px;">
+         <ui:insert name="content"/>
+        
+</div>
+        <h:outputStylesheet library="css" name="common.css"/>
+        <h:outputScript library="js" name="common.js" target="body"/>
+        <ui:insert name="resources"/>
+        
+    </h:body>
+                            <h:graphicImage library="img" name="logo.png" styleClass="logo" width="200" style="position: absolute; right: 6px;" />
+    
+</html>

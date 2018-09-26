@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Register</title>
+        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <h:form>
+            
+            <p:growl autoUpdate="true"/>
+            
+            <div  class="centerDiv" style="width: 400px; height: 400px">
+                <p:panel>
+                    <f:facet name="header">Register</f:facet>
+          
+<h:panelGrid columns="2">
+nom :
+<h:inputText value ="#{userBean.lastName}" required="true" label="nom"
+                             style="#{ component.valid ? '' : 'border-color:red;'}"/>
+prenom : 
+<h:inputText value ="#{userBean.firstName}" required="true" label="prenom"
+                             style="#{ component.valid ? '' : 'border-color:red;'}"/>
+mot de passe :
+<h:inputSecret value ="#{userBean.password}" required="true" label="mot de passe"
+                             style="#{ component.valid ? '' : 'border-color:red;'}"/>
+email : 
+<h:inputText value ="#{userBean.email}" required="true" label="email"
+                             style="#{ component.valid ? '' : 'border-color:red;'}"/>
+role :
+<h:inputText value ="#{userBean.role}" required="true" label="role"
+                             style="#{ component.valid ? '' : 'border-color:red;'}"/>
+n°permir de conduite :
+<h:inputText value ="#{userBean.driverLicenseNumber}" required="true" label="n°permit"
+                             style="#{ component.valid ? '' : 'border-color:red;'}"/>
+
+
+                
+            </h:panelGrid>
+                    <p:commandButton value="Confirmer" action="#{userBean.addInsured()}" ajax="	"/>
+                </p:panel>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

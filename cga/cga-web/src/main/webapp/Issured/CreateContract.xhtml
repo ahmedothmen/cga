@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+<h:body>
+<h:form >
+<center>
+<h:panelGrid columns="2">
+ <p:outputLabel for="start" value="Select Start Date:" />
+        <p:calendar id="start" value="#{contractBean.startDate}" pattern="dd-MM-yyyy" mask="true" readonlyInput="true" maxdate="#{contractBean.endDate}" mindate="#{now}">
+             <p:ajax event="dateSelect" update="end"/>
+        
+        </p:calendar>
+         <p:outputLabel for="end" value="Select End Date:" />
+        <p:calendar id="end" value="#{contractBean.endDate}" pattern="dd-MM-yyyy" mask="true" disabled="#{empty contractBean.startDate}" readonlyInput="true" mindate="#{contractBean.startDate}"   > 
+              <p:ajax event="dateSelect" update="start"/>
+        
+        </p:calendar>
+         
+           <p:dataList value="#{contractBean.myCar()}" var="car" type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated">
+        <f:facet name="header">
+            Select your vehicle
+        </f:facet>
+        <p:commandLink   title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+            <f:setPropertyActionListener value="#{car}" target="#{contractBean.selectedcar}" />
+            <h:outputText value="#{car.immatriculation}, #{car.marque}" />
+        </p:commandLink>
+        <h:outputText value="#{car.immatriculation}, #{car.marque}" style="display:inline-block"/>
+            <p:outputLabel value="#{contractBean.vehicle.id}"/>
+        
+    </p:dataList>
+    <h:outputText value="#{contractBean.selectedcar.id}"/>
+ 
+    
+
+
+<h:commandButton action="#{contractBean.calculercost()}" value="your Coste" />
+<p:outputLabel value="#{contractBean.costContract}"></p:outputLabel>
+
+ <p:growl id="message" showDetail="true" />
+ 
+    <p:commandButton value="Send" actionListener="#{contractBean.Save()}" update="message">
+        <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+    </p:commandButton>
+ 
+    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"  />
+        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
+
+</h:panelGrid>
+</center>
+</h:form>
+
+
+	</h:body>
+	</ui:define>
+	</ui:composition>
+	</html>

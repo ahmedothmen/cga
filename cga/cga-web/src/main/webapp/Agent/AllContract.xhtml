@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+
+		<body>
+			<h:form id="form">
+				<p:dataList value="#{contractBean.getAllContract()}" var="contract"
+					type="unordered" itemType="none" paginator="true" rows="7"
+					styleClass="paginated">
+					<f:facet name="header">
+            List of Waiting Contratct
+        </f:facet>
+					<p:commandLink update=":form:contractDetail"
+						oncomplete="PF('contractDialog').show()" title="View Detail"
+						styleClass="ui-icon ui-icon-search"
+						style="float:left;margin-right:40px">
+
+						<f:setPropertyActionListener value="#{contract}"
+							target="#{contractBean.selectedContract}" />
+						<h:outputText
+							value="#{contract.id}, #{contract.startDate} - #{contract.endDate}" />
+					</p:commandLink>
+					<h:outputText
+						value="#{contract.id}, #{contract.startDate} - #{contract.endDate}"
+						style="display:inline-block" />
+
+					<p:commandLink actionListener="#{contractBean.Refused(contract)}"
+						title="Refused" styleClass="ui-icon  ui-icon-closethick"
+						style="float:left;margin-right:40px">
+					</p:commandLink>
+					<p:commandLink actionListener="#{contractBean.Accept(contract)}"
+						title="Accepted" styleClass="ui-icon  ui-icon-check"
+						style="float:left;margin-right:40px">
+
+					</p:commandLink>
+					<p:commandLink actionListener="#{contractBean.envoyermail(contract.insured.email)}"
+						title="Mail" styleClass="ui-icon  ui-icon-mail-closed"
+						style="float:left;margin-right:40px">
+
+					</p:commandLink>
+				</p:dataList>
+				<p:dialog header="Contract Info" widgetVar="contractDialog"
+					modal="true" showEffect="blind" hideEffect="explode"
+					resizable="false">
+					<p:outputPanel id="contractDetail" style="text-align:center;">
+						<p:panelGrid columns="2"
+							rendered="#{not empty contractBean.selectedContract}"
+							columnClasses="label,value">
+
+							<h:outputText value="Num" />
+							<h:outputText value="#{contractBean.selectedContract.id}" />
+
+							<h:outputText value="Start Date" />
+							<h:outputText value="#{contractBean.selectedContract.startDate}" />
+
+							<h:outputText value="End Date" />
+							<h:outputText value="#{contractBean.selectedContract.endDate}" />
+
+							<h:outputText value="Isured's name" />
+							<h:outputText
+								value="#{contractBean.selectedContract.insured.firstName} #{contractBean.selectedContract.insured.lastName}" />
+							<h:outputText value="Insured's mail" />
+							<h:outputText
+								value="#{contractBean.selectedContract.insured.email}" />
+							<h:outputText value="Insured's vehicule" />
+							<h:outputText value="#{contractBean.selectedContract.vehicles}" />
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:dialog>
+				
+			</h:form>
+
+		</body>
+	</ui:define>
+</ui:composition>
+</html>

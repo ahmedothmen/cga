@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+
+      >
+      <head id="j_idt2">
+      
+      
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+           
+            <meta name="theme-color" content="#03A9F4" />
+            <link type="text/css" rel="stylesheet" href="./avalon/javax.faces.resource/theme.css" />
+            <link type="text/css" rel="stylesheet" href="./avalon/javax.faces.resource/fa/font-awesome.css"/>
+            <link type="text/css" rel="stylesheet" href="./avalon/javax.faces.resource/components.css"/>
+            <script type="text/javascript" src="./avalon/javax.faces.resource/moment/moment.js"></script>
+            <script type="text/javascript" src="./avalon/javax.faces.resource/schedule/schedule.js"></script>
+            <link type="text/css" rel="stylesheet" href="./avalon/javax.faces.resource/css/nanoscroller.css"/>
+            <link type="text/css" rel="stylesheet" href="./avalon/javax.faces.resource/css/animate.css"></link>
+            <link type="text/css" rel="stylesheet" href="./avalon/javax.faces.resource/css/layout-blue.css"/>
+            <script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en_US';PrimeFaces.settings.projectStage='Development';}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+        <title>Dashboard</title>
+        <script type="text/javascript" src="./avalon/javax.faces.resource/js/nanoscroller.js"></script>
+        <script type="text/javascript" src="./avalon/javax.faces.resource/js/layout.js"></script>
+        
+      
+<style type="text/css"> 
+.search-box {
+  height: 300px;
+  width: 300px;
+}
+.search-box_light {
+  background-color: #DEF;
+  color: #777;
+}
+.search-box__btn {
+  padding: 4px;
+}
+.search-box__btn_max_visible {
+  font-weight: bold;
+}
+
+
+/* body {
+    padding: 1em;
+    background: #999
+}
+.scrollable {
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+   margin-left:0px;
+   margin-top:5px;
+    padding: 0;
+    border:10px solid #fff;
+    background:white;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+img {
+    max-height: 150px;
+    margin: 0 auto;
+    display: block;
+}
+.items {
+    -webkit-animation: scroll 12s infinite;
+    -moz-animation: scroll 5s infinite;
+    -ms-animation: scroll 5s infinite;
+}
+
+@-webkit-keyframes scroll {
+  0%   { margin-top: 0; }
+27.33%  { margin-top: 0 }
+  33.33%  { margin-top: -500px; }
+60.66% { margin-top: -500px; }
+66.66% { margin-top: -1000px; }
+94.99% { margin-top: -1000px; }
+  100%  { margin-top: 0 }
+}
+@-moz-keyframes scroll {
+  0%   { margin-top: 0; }
+27.33%  { margin-top: 0 }
+  33.33%  { margin-top: -500px; }
+60.66% { margin-top: -500px; }
+66.66% { margin-top: -1000px; }
+94.99% { margin-top: -1000px; }
+  100%  { margin-top: 0 }
+}
+@-ms-keyframes scroll {
+  0%   { margin-top: 0; }
+27.33%  { margin-top: 0 }
+  33.33%  { margin-top: -500px; }
+60.66% { margin-top: -500px; }
+66.66% { margin-top: -1000px; }
+94.99% { margin-top: -1000px; }
+  100%  { margin-top: 0 }
+} */
+.container {
+  width:600px;
+	height:200px;
+	position:relative;
+	overflow:hidden;
+}
+
+.css-carousel {
+  width:100%;
+  -webkit-animation: css-carousel 20s linear infinite;
+	-moz-animation: css-carousel 20s linear infinite;
+	-ms-animation: css-carousel 20s linear infinite;
+	animation: css-carousel 20s linear infinite;
+}
+
+.css-carousel .css-img{
+  display:inline-block;
+
+}
+.css-carousel img:not(:first-child){
+  float:left;
+}
+
+@-webkit-keyframes css-carousel {
+   0%, 10% {margin-top:0}
+  12%, 22% { margin-top:-200px; }
+  24%, 34% { margin-top:-400px; }
+  36%, 46% { margin-top:-600px;}
+  48%, 58% { margin-top:-800px;}
+  60%, 70% { margin-top:-1000px;}
+   72%, 82% { margin-top:-1200px;}
+   94%, 98% { margin-top:-1400px;}
+  100% { margin-top:0;}
+    
+}
+@-moz-keyframes css-carousel {
+  0%, 10% {margin-top:0}
+ 12%, 22% { margin-top:-200px; }
+  24%, 34% { margin-top:-400px; }
+  36%, 46% { margin-top:-600px;}
+  48%, 58% { margin-top:-800px;}
+  60%, 70% { margin-top:-1000px;}
+   72%, 82% { margin-top:-1200px;}
+   94%, 98% { margin-top:-1400px;}
+  100% { margin-top:0;}
+  
+}
+@-ms-keyframes css-carousel {
+  0%, 10% {margin-top:0}
+  12%, 22% { margin-top:-200px; }
+  24%, 34% { margin-top:-400px; }
+  36%, 46% { margin-top:-600px;}
+  48%, 58% { margin-top:-800px;}
+  60%, 70% { margin-top:-1000px;}
+   72%, 82% { margin-top:-1200px;}
+   94%, 98% { margin-top:-1400px;}
+  100% { margin-top:0;}
+}
+@keyframes css-carousel {
+  0%, 10% {margin-top:0}
+  12%, 22% { margin-top:-200px; }
+  24%, 34% { margin-top:-400px; }
+  36%, 46% { margin-top:-600px;}
+  48%, 58% { margin-top:-800px;}
+  60%, 70% { margin-top:-1000px;}
+   72%, 82% { margin-top:-1200px;}
+   94%, 98% { margin-top:-1400px;}
+  100% { margin-top:0;}
+}
+
+  body{-webkit-backface-visibility:hidden}
+  .cNote{
+    position:fixed;
+    top:0;
+    left:0;
+    min-height:60px;
+    line-height:60px;
+    width:100%;
+    z-index:1000;
+    text-align:center;
+    font-size:18px;color:#fff;
+    background: rgba(0, 0, 0, 0.8);
+    opacity:0;
+    -webkit-transition: opacity 200ms ease-in;
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in;
+    pointer-events: none;
+  }
+  .cNote:target{
+    opacity:1;
+    pointer-events: auto;
+  }
+  .cNote .erreur{background-color: rgba(246, 71, 71, 0.7) }
+  .cNote .succes{background-color:rgba(3, 201, 169, 0.7)}
+  .cNote .attention{background-color: rgba(247, 202, 24, 0.7)}
+  .cNote a.cFerme {color:#ffffff;margin:0 10px 0 10px;float:right;}
+</style>
+      
+      
+      
+        </head>
+        
+        
+        <body>
+        
+        <div class="layout-wrapper menu-layout-static">
+
+    <div class="topbar clearfix">
+        <div class="topbar-left" >
+        <img  id="j_idt12" src="./avalon/javax.faces.resource/images/logo.png;" alt="" class="topbar-logo" />
+        </div>
+        
+        <div class="topbar-right">
+        
+            <a id="menu-button" href="#">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            
+            <a id="topbar-menu-button" href="#">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul class="topbar-items fadeInDown animated">
+            
+                <li>
+                    <a href="#">
+                        <i class="topbar-icon fa fa-fw fa-cog"></i>
+                        <span class="topbar-item-name">Settings</span>
+                    </a>
+                    <ul class="layout-menu animated">
+                        <li role="menuitem">
+                            <a href="#">
+                                <i class="fa fa-fw fa-paint-brush"></i>
+                                <span>Change Theme</span>
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="#">
+                                <i class="fa fa-fw fa-star-o"></i>
+                                <span>Favorites</span>
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="#">
+                                <i class="fa fa-fw fa-lock"></i>
+                                <span>Lock Screen</span>
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="#">
+                                <i class="fa fa-fw fa-picture-o"></i>
+                                <span>Wallpaper</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="topbar-icon animated swing fa fa-fw fa-envelope-o"></i>
+                        <span class="topbar-badge animated rubberBand">5</span>
+                        <span class="topbar-item-name">Messages</span>
+                    </a>
+                    <ul class="layout-menu animated">
+                        <li role="menuitem">
+                            <a href="#" class="topbar-message"><img id="j_idt19" src="./avalon/javax.faces.resource/images/avatar1.png" alt="" width="35" />
+                                <span>Give me a call</span>
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="#" class="topbar-message"><img id="j_idt21" src="./avalon/javax.faces.resource/images/avatar2.png" alt="" width="35" />
+                                <span>Sales reports attached</span>
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="#" class="topbar-message"><img id="j_idt23" src="./avalon/javax.faces.resource/images/avatar3.png" alt="" width="35" />
+                                <span>About your invoice</span>
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="#" class="topbar-message"><img id="j_idt25" src="./avalon/javax.faces.resource/images/avatar2.png" alt="" width="35" />
+                                <span>Meeting today at 10pm</span>
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="#" class="topbar-message"><img id="j_idt27" src="./avalon/javax.faces.resource/images/avatar4.png" alt="" width="35" />
+                                <span>Out of office</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                
+                    <a href="#" >
+                        <i class="topbar-icon fa fa-fw fa-bell-o"></i>
+                        <span class="topbar-badge animated rubberBand">4</span>
+                        <span class="topbar-item-name">Notifications</span>
+                    </a>
+                    <ul class="layout-menu animated">
+                        <li role="menuitem">
+                            <a href="#">
+                                <i class="fa fa-fw fa-tasks"></i>
+                                <span>Pending tasks</span>
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="#">
+                                <i class="fa fa-fw fa-calendar-check-o"></i>
+                                <span>Meeting today at 3pm</span>
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="#">
+                                <i class="fa fa-fw fa-download"></i>
+                                <span>Download documents</span>
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="#">
+                                <i class="fa fa-fw fa-plane"></i>
+                                <span>Book flight</span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <li>
+               
+               <h:form>
+               
+               <h:link  styleClass="fa fa-user" value="#{loginBean.login}"  outcome="profile"  style="color: white; font-size: 1.35em "/>
+               </h:form>
+                </li>
+             
+                <li class="search-item">
+                    <div class="topbar-search">
+                        <input type="text" placeholder="Search" />
+                        <i class="fa fa-search"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+<form id="menuform" name="menuform" method="post" action="/avalon/dashboard.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="menuform" value="menuform" />
+
+        <div class="layout-menu-container ">
+            <div class="nano">
+                <div class="nano-content menu-scroll-content">
+                        <div class="profile">
+                            <a id="profile-options" href="#"><img id="menuform:j_idt32" src="./avalon/javax.faces.resource/images/avatar.png" alt="" class="profile-image" style="border: 0 none" />
+                                <span class="profile-name">Isabel Oliviera</span>
+                                <i class="fa fa-fw fa-caret-down"></i>
+                                <span class="profile-role">Marketing</span>
+                            </a>
+                        </div>
+
+                        <ul id="profile-menu" class="layout-menu">
+                            <li role="menuitem">
+                                <a href="#">
+                                    <i class="fa fa-fw fa-user"></i>
+                                    <span>Profile</span>
+                                </a>
+                                <div class="layout-menu-tooltip">
+                                    <div class="layout-menu-tooltip-arrow"></div>
+                                    <div class="layout-menu-tooltip-text">Profile</div>
+                                </div>
+                            </li>
+                            <li role="menuitem">
+                                <a href="#">
+                                    <i class="fa fa-fw fa-user-secret"></i>
+                                    <span>Privacy</span>
+                                </a>
+                                <div class="layout-menu-tooltip">
+                                    <div class="layout-menu-tooltip-arrow"></div>
+                                    <div class="layout-menu-tooltip-text">Privacy</div>
+                                </div>
+                            </li>
+                            <li role="menuitem">
+                                <a href="#">
+                                    <i class="fa fa-fw fa-cog"></i>
+                                    <span>Settings</span>
+                                </a>
+                                <div class="layout-menu-tooltip">
+                                    <div class="layout-menu-tooltip-arrow"></div>
+                                    <div class="layout-menu-tooltip-text">Settings</div>
+                                </div>
+                            </li>
+                            <li role="menuitem">
+                                <a href="#">
+                                    <i class="fa fa-fw fa-sign-out"></i>
+                                    <span>Logout</span>
+                                </a>
+                                <div class="layout-menu-tooltip">
+                                    <div class="layout-menu-tooltip-arrow"></div>
+                                    <div class="layout-menu-tooltip-text">Logout</div>
+                                </div>
+                            </li>
+                        </ul><ul id="menuform:j_idt34" class="layout-menu clearfix"><li id="menuform:om_dashboards" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-dashboard"></i><span>Dashboards</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Dashboards</div></div><ul role="menu"><li id="menuform:om_dashboard" role="menuitem"><a href="./avalon/dashboard.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0"><i class="fa fa-fw fa-home"></i><span>Generic</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Generic</div></div></li><li id="menuform:om_dashboard_banking" role="menuitem"><a href="./avalon/dashboard_banking.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0"><i class="fa fa-fw fa-bank"></i><span>Banking</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Banking</div></div></li></ul></li><li id="menuform:am_customization" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-bars"></i><span>Customization</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i><span class="menuitem-badge">8</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Customization</div></div><ul role="menu"><li id="menuform:custom1" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:custom1':'menuform:custom1'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-bars"></i><span>Static Menu</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Static Menu</div></div></li><li id="menuform:custom2" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:custom2':'menuform:custom2'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-bars"></i><span>Overlay Menu</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Overlay Menu</div></div></li><li id="menuform:custom3" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:custom3':'menuform:custom3'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-bars"></i><span>Slim Menu</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Slim Menu</div></div></li><li id="menuform:custom4" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:custom4':'menuform:custom4'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-bars"></i><span>Horizontal Menu</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Horizontal Menu</div></div></li><li id="menuform:custom5" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:custom5':'menuform:custom5'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-user"></i><span>Inline Profile</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Inline Profile</div></div></li><li id="menuform:custom6" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:custom6':'menuform:custom6'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-user-circle"></i><span>Top Profile</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Top Profile</div></div></li><li id="menuform:custom7" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:custom7':'menuform:custom7'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-square-o"></i><span>Light Menu</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Light Menu</div></div></li><li id="menuform:custom8" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:custom8':'menuform:custom8'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-square"></i><span>Dark Menu</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Dark Menu</div></div></li></ul></li><li id="menuform:am_layout" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-fire"></i><span>Layout Colors</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Layout Colors</div></div><ul role="menu"><li id="menuform:am_layout_flat" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-square-o"></i><span>Flat</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Flat</div></div><ul role="menu"><li id="menuform:am_layout_flat_1" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_flat_1':'menuform:am_layout_flat_1'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Blue</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Blue</div></div></li><li id="menuform:am_layout_flat_2" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_flat_2':'menuform:am_layout_flat_2'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Cyan</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Cyan</div></div></li><li id="menuform:am_layout_flat_3" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_flat_3':'menuform:am_layout_flat_3'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Indigo</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Indigo</div></div></li><li id="menuform:am_layout_flat_4" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_flat_4':'menuform:am_layout_flat_4'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Purple</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Purple</div></div></li><li id="menuform:am_layout_flat_5" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_flat_5':'menuform:am_layout_flat_5'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Teal</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Teal</div></div></li><li id="menuform:am_layout_flat_6" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_flat_6':'menuform:am_layout_flat_6'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Pink</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Pink</div></div></li><li id="menuform:am_layout_flat_7" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_flat_7':'menuform:am_layout_flat_7'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Lime</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Lime</div></div></li><li id="menuform:am_layout_flat_8" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_flat_8':'menuform:am_layout_flat_8'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Green</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Green</div></div></li><li id="menuform:am_layout_flat_9" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_flat_9':'menuform:am_layout_flat_9'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Amber</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Amber</div></div></li><li id="menuform:am_layout_flat_10" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_flat_10':'menuform:am_layout_flat_10'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Dark Grey</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Dark Grey</div></div></li></ul></li><li id="menuform:am_layout_special" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-square"></i><span>Special</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Special</div></div><ul role="menu"><li id="menuform:am_layout_special_1" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_special_1':'menuform:am_layout_special_1'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Influenza</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Influenza</div></div></li><li id="menuform:am_layout_special_2" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_special_2':'menuform:am_layout_special_2'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Calm</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Calm</div></div></li><li id="menuform:am_layout_special_3" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_special_3':'menuform:am_layout_special_3'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Crimson</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Crimson</div></div></li><li id="menuform:am_layout_special_4" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_special_4':'menuform:am_layout_special_4'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Night</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Night</div></div></li><li id="menuform:am_layout_special_5" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_special_5':'menuform:am_layout_special_5'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Skyline</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Skyline</div></div></li><li id="menuform:am_layout_special_6" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_special_6':'menuform:am_layout_special_6'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Sunkist</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Sunkist</div></div></li><li id="menuform:am_layout_special_7" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_special_7':'menuform:am_layout_special_7'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Little Leaf</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Little Leaf</div></div></li><li id="menuform:am_layout_special_8" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_special_8':'menuform:am_layout_special_8'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Joomla</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Joomla</div></div></li><li id="menuform:am_layout_special_9" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_special_9':'menuform:am_layout_special_9'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Firewatch</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Firewatch</div></div></li><li id="menuform:am_layout_special_10" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:am_layout_special_10':'menuform:am_layout_special_10'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Suzy</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Suzy</div></div></li></ul></li></ul></li><li id="menuform:am_theme" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-paint-brush"></i><span>Themes</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i><span class="menuitem-badge">5</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Themes</div></div><ul role="menu"><li id="menuform:theme1" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:theme1':'menuform:theme1'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Blue</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Blue</div></div></li><li id="menuform:theme2" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:theme2':'menuform:theme2'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Cyan</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Cyan</div></div></li><li id="menuform:theme3" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:theme3':'menuform:theme3'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Indigo</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Indigo</div></div></li><li id="menuform:theme4" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:theme4':'menuform:theme4'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Purple</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Purple</div></div></li><li id="menuform:theme5" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:theme5':'menuform:theme5'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Teal</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Teal</div></div></li><li id="menuform:theme6" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:theme6':'menuform:theme6'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Orange</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Orange</div></div></li><li id="menuform:theme7" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:theme7':'menuform:theme7'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Deep Purple</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Deep Purple</div></div></li><li id="menuform:theme8" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:theme8':'menuform:theme8'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Light Blue</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Light Blue</div></div></li><li id="menuform:theme9" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:theme9':'menuform:theme9'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Green</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Green</div></div></li><li id="menuform:theme10" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:theme10':'menuform:theme10'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Light Green</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Light Green</div></div></li><li id="menuform:theme11" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:theme11':'menuform:theme11'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Amber</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Amber</div></div></li><li id="menuform:theme12" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:theme12':'menuform:theme12'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Brown</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Brown</div></div></li><li id="menuform:theme13" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:theme13':'menuform:theme13'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-fw fa-paint-brush"></i><span>Dark Grey</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Dark Grey</div></div></li></ul></li><li id="menuform:om_components" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-sitemap"></i><span>Components</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Components</div></div><ul role="menu"><li id="menuform:om_sample" role="menuitem"><a href="./avalon/sample.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0"><i class="fa fa-fw fa-columns"></i><span>Sample Page</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Sample Page</div></div></li><li id="menuform:om_forms" role="menuitem"><a href="./avalon/forms.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0"><i class="fa fa-fw fa-code"></i><span>Forms</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Forms</div></div></li><li id="menuform:om_data" role="menuitem"><a href="./avalon/data.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0"><i class="fa fa-fw fa-table"></i><span>Data</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Data</div></div></li><li id="menuform:om_panels" role="menuitem"><a href="./avalon/panel.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0"><i class="fa fa-fw fa-list-alt"></i><span>Panels</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Panels</div></div></li><li id="menuform:om_overlays" role="menuitem"><a href="./avalon/overlay.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0"><i class="fa fa-fw fa-square"></i><span>Overlays</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Overlays</div></div></li><li id="menuform:om_menus" role="menuitem"><a href="./avalon/menu.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0"><i class="fa fa-fw fa-minus-square-o"></i><span>Menus</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Menus</div></div></li><li id="menuform:om_messages" role="menuitem"><a href="./avalon/messages.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0"><i class="fa fa-fw fa-circle-o-notch"></i><span>Messages</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Messages</div></div></li><li id="menuform:om_charts" role="menuitem"><a href="./avalon/charts.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0"><i class="fa fa-fw fa-area-chart"></i><span>Charts</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Charts</div></div></li><li id="menuform:om_file" role="menuitem"><a href="./avalon/file.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0"><i class="fa fa-fw fa-arrow-circle-o-up"></i><span>File</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">File</div></div></li><li id="menuform:om_misc" role="menuitem"><a href="./avalon/misc.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0"><i class="fa fa-fw fa-user-secret"></i><span>Misc</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Misc</div></div></li></ul></li><li id="menuform:om_default" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-life-saver"></i><span>Template Pages</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Template Pages</div></div><ul role="menu"><li id="menuform:om_empty" role="menuitem"><a href="./avalon/empty.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0" target="_blank"><i class="fa fa-fw fa-square-o"></i><span>Empty Page</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Empty Page</div></div></li><li id="menuform:om_db_landing" role="menuitem"><a href="./avalon/landing.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0" target="_blank"><i class="fa fa-fw fa-certificate"></i><span>Landing</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Landing</div></div></li><li id="menuform:om_login" role="menuitem"><a href="./avalon/login.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0" target="_blank"><i class="fa fa-fw fa-sign-in"></i><span>Login Page</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Login Page</div></div></li><li id="menuform:om_error" role="menuitem"><a href="./avalon/error.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0" target="_blank"><i class="fa fa-fw fa-exclamation-circle"></i><span>Error Page</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Error Page</div></div></li><li id="menuform:om_404" role="menuitem"><a href="./avalon/404.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0" target="_blank"><i class="fa fa-fw fa-times"></i><span>404 Page</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">404 Page</div></div></li><li id="menuform:om_access" role="menuitem"><a href="./avalon/access.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0" target="_blank"><i class="fa fa-fw fa-exclamation-triangle"></i><span>Access Denied</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Access Denied</div></div></li></ul></li><li id="menuform:om_hierarchy" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-gg"></i><span>Menu Hierarchy</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Menu Hierarchy</div></div><ul role="menu"><li id="menuform:om_sm1" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-sign-in"></i><span>Submenu 1</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Submenu 1</div></div><ul role="menu"><li id="menuform:om_sm11" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-sign-in"></i><span>Submenu 1.1</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Submenu 1.1</div></div><ul role="menu"><li id="menuform:om_lnk111" role="menuitem"><a href=".;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0#"><i class="fa fa-fw fa-sign-in"></i><span>Link 1.1.1</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Link 1.1.1</div></div></li><li id="menuform:om_lnk112" role="menuitem"><a href=".;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0#"><i class="fa fa-fw fa-sign-in"></i><span>Link 1.1.2</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Link 1.1.2</div></div></li><li id="menuform:om_lnk113" role="menuitem"><a href=".;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0#"><i class="fa fa-fw fa-sign-in"></i><span>Link 1.1.3</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Link 1.1.3</div></div></li></ul></li><li id="menuform:om_sm12" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-sign-in"></i><span>Submenu 1.2</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Submenu 1.2</div></div><ul role="menu"><li id="menuform:om_lnk121" role="menuitem"><a href=".;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0#"><i class="fa fa-fw fa-sign-in"></i><span>Link 1.2.1</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Link 1.2.1</div></div></li></ul></li></ul></li><li id="menuform:om_sm2" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-sign-in"></i><span>Submenu 2</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Submenu 2</div></div><ul role="menu"><li id="menuform:om_sm21" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-sign-in"></i><span>Submenu 2.1</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Submenu 2.1</div></div><ul role="menu"><li id="menuform:om_lnk211" role="menuitem"><a href=".;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0#"><i class="fa fa-fw fa-sign-in"></i><span>Link 2.1.1</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Link 2.1.1</div></div></li><li id="menuform:om_lnk212" role="menuitem"><a href=".;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0#"><i class="fa fa-fw fa-sign-in"></i><span>Link 2.1.2</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Link 2.1.2</div></div></li></ul></li><li id="menuform:om_sm22" role="menuitem"><a href="#" class="ripplelink"><i class="fa fa-fw fa-sign-in"></i><span>Submenu 2.2</span><span class="ink animate"></span><i class="fa fa-fw fa-angle-down menuitem-toggle-icon"></i></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Submenu 2.2</div></div><ul role="menu"><li id="menuform:om_lnk221" role="menuitem"><a href=".;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0#"><i class="fa fa-fw fa-sign-in"></i><span>Link 2.2.1</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Link 2.2.1</div></div></li></ul></li></ul></li></ul></li><li id="menuform:om_doc" role="menuitem"><a href="./avalon/docs.xhtml;jsessionid=node0t1bya7r411rozhn6a48cil4f325930.node0"><i class="fa fa-fw fa-book"></i><span>Documentation</span></a><div class="layout-menu-tooltip"><div class="layout-menu-tooltip-arrow"></div><div class="layout-menu-tooltip-text">Documentation</div></div></li></ul><script id="menuform:j_idt34_s" type="text/javascript">PrimeFaces.cw("Avalon","me",{id:"menuform:j_idt34"});</script>
+                </div>
+            </div>
+        </div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="-3784561211329516746:549984700397083665" autocomplete="off" />
+</form>
+            
+
+
+
+            
+            
+            <div class="layout-main">
+        
+        <div class="dashboard" >
+           
+           
+            <div class="ui-g overview-boxes">
+
+<ui:repeat var="pol" value="#{vehicleBean.vehicles}" varStatus="status">                
+                
+                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                    <div class="ui-g overview-box overview-box-1">
+                        <div class="overview-box-title">
+                            
+                            <span>#{pol.insured.id}</span>
+                        </div>
+                        <div class="overview-box-stats">Brand : #{pol.marque}</div><br/>
+                         <div class="overview-box-stats">Model : #{pol.model}</div><br/>
+                         <div class="overview-box-stats">Chassis n° #{pol.numchassis}</div>
+                         <div class="overview-box-stats">Color #{pol.color}</div>
+                         <div class="overview-box-stats">Registration #{pol.immatriculation}</div>
+                         
+<!--                          <div class="overview-box-stats">used by #{policyManaged.calculer(pol.id)} persones</div> -->
+                    </div>
+                </div>
+                 </ui:repeat>
+               
+                
+            </div>
+                
+            <div class="ui-carousel-viewport"  >
+                <div class="ui-g-12 ui-lg-6 global-sales"><div id="j_idt38" class="ui-panel ui-widget ui-widget-content ui-corner-all" data-widget="widget_j_idt38"><div id="j_idt38_header" class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span class="ui-panel-title">
+                            <i class="fa fa-globe"></i>
+                            <span>Client's vehicle</span></span></div><div id="j_idt38_content" class="ui-panel-content ui-widget-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Brand</th>
+                                    <th>Model</th>
+                                    <th>Chassis n°</th>
+                                    <th>Color</th>
+                                    <th>Power</th>
+                                     <th>Registration</th>
+                                      <th>Type</th>
+                                       <th>Buy Date</th>
+                                        <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <ui:repeat var="pol" value="#{vehicleBean.vehicles}" varStatus="status">                
+                               
+                                <tr>
+                                    <td>#{pol.marque}</td>
+                                    <td>#{pol.model}</td>
+                                    <td>#{pol.numchassis}</td>
+                                    <td>#{pol.color}</td>
+                                  <td>#{pol.horsepower}</td>
+                                  <td>#{pol.immatriculation}</td>
+                                  <td>#{pol.type}</td>
+                                  <td>#{pol.dateachat}</td>
+                                  
+                                  
+                                   
+                                    <td>   
+                             <h:form>     
+                             <h:commandLink action="#{vehicleBean.SupprimerVehicle(pol.id)}"  class="fa fa-close" />
+                               </h:form>                                  
+                                    </td>
+
+                                </tr>
+                                </ui:repeat>
+                           
+                            </tbody>
+                        </table></div>
+                                                     
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OETj9aTYO2Q" frameborder="0" ></iframe>
+     
+                        </div><script id="j_idt38_s" type="text/javascript">PrimeFaces.cw("Panel","widget_j_idt38",{id:"j_idt38"});</script>
+                </div>
+         
+                
+            </div>
+             <br/>   
+             <div class="container">
+                      <div class="css-carousel">
+<!--            <ui:repeat var="ins" value="#{policyManaged.listInjured}" varStatus="status">       -->
+<!--             <div class="ui-g" style="height:200px;width:600px;"> -->
+<!--                <div class="css-img" style="height:200px;width:600px;">    -->
+               
+<!--                 <div class="ui-g-12 ui-lg-4 contacts" style="height:200px;width:300px;"> -->
+<!--                 <div id="j_idt97" class="ui-panel ui-widget ui-widget-content ui-corner-all" data-widget="widget_j_idt97"><div id="j_idt97_header" class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span class="ui-panel-title">Client Without Contact</span></div><div id="j_idt97_content" class="ui-panel-content ui-widget-content"> -->
+   
+
+<!--                            </div> -->
+                        
+<!--                            </div> -->
+<!--                          </div> -->
+<!--                         </div></div><script id="j_idt97_s" type="text/javascript">PrimeFaces.cw("Panel","widget_j_idt97",{id:"j_idt97"});</script> -->
+<!--              </ui:repeat>    -->
+          
+            </div>
+        
+             </div>
+            
+                        
+                         </div>
+                        </div></div><script id="j_idt97_s" type="text/javascript">PrimeFaces.cw("Panel","widget_j_idt97",{id:"j_idt97"});</script>
+  
+           
+    
+    <div class="layout-footer">
+        <span class="footer-text-left"><img id="j_idt147" src="./avalon/javax.faces.resource/images/logo-dark.png" alt="" />
+        </span>
+        <span class="footer-text-right">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-github"></i></a>
+        </span>
+    </div>
+       <div id="j_idt150" style="width:32px;height:32px;position:fixed;right:7px;bottom:7px"><div id="j_idt150_start" style="display:none">
+               <i class="fa fa-circle-o-notch fa-spin ajax-loader" aria-hidden="true"></i></div><div id="j_idt150_complete" style="display:none"></div></div><script id="j_idt150_s" type="text/javascript">$(function(){PrimeFaces.cw("AjaxStatus","widget_j_idt150",{id:"j_idt150"});});</script>
+              </body>
+
+</html>

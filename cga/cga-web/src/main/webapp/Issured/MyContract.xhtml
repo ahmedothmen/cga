@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+	
+	<body>
+	
+	<h:form>
+	
+    <p:carousel widgetVar="TAB" value="#{contractBean.myContract}" headerText="My Contract" var="contract" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+           
+            <h:outputText value="Contract Num:" />
+            <h:outputText value="#{contract.id}" />
+            
+  <h:outputText value="Sending Date"  />
+            <h:outputText value="#{contract.dateSending}" />
+             <h:outputText value="Cost of Contract" />
+            <h:outputText value="#{contract.costContract}" />
+            <h:outputText value="Start Date" />
+            <h:outputText value="#{contract.startDate}" />
+ 
+            <h:outputText value="End Date" />
+            <h:outputText value="#{contract.endDate}" />
+ 
+            <h:outputText value="Status" />
+            <h:outputText value="#{contract.etat}" />
+            
+           
+    <p:progressBar value="#{contractBean.progess(contract.etat)}" labelTemplate="{value}%" displayOnly="true"/>
+        </p:panelGrid>
+ 
+      
+    </p:carousel>
+
+    </h:form>
+	    
+		</body>
+	</ui:define>
+</ui:composition>
+</html>
